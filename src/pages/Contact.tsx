@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ContactForm } from '../types';
-import { submitContact } from '../services/api';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState<ContactForm>({
@@ -28,7 +27,8 @@ const Contact: React.FC = () => {
     setLoading(true);
 
     try {
-      await submitContact(formData);
+      // Simular envío de formulario
+      await new Promise(resolve => setTimeout(resolve, 2000));
       setSubmitted(true);
       setFormData({
         name: '',

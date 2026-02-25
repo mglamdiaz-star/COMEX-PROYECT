@@ -17,9 +17,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-      {service.image && (
+      {service.image && service.image !== 'air' && service.image !== 'sea' && service.image !== 'customs' && (
         <img 
-          src={`http://localhost:5000${service.image}`} 
+          src={service.image} 
           alt={service.title}
           className="w-full h-48 object-cover"
         />

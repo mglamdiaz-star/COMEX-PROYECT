@@ -3,7 +3,75 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProfessionalServiceCard from '../components/ProfessionalServiceCard';
 import { Service } from '../types';
-import { getServices } from '../services/api';
+
+const mockServices: Service[] = [
+  {
+    _id: '1',
+    title: 'Carga Aérea Internacional',
+    description: 'Transporte rápido y seguro para mercancías urgentes con cobertura mundial. Coordinación completa con aerolíneas y gestión de documentación aérea.',
+    category: 'gestion_operativa' as const,
+    price: 0,
+    image: 'air',
+    featured: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '2',
+    title: 'Carga Marítima',
+    description: 'Soluciones económicas para grandes volúmenes con contenedores completos (FCL) y consolidados (LCL). Rutas globales optimizadas.',
+    category: 'gestion_operativa' as const,
+    price: 0,
+    image: 'sea',
+    featured: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '3',
+    title: 'Aduanas y Documentación',
+    description: 'Gestión completa de trámites aduaneros, clasificación arancelaria y documentación internacional. Expertos en regulaciones globales.',
+    category: 'asesoria_estrategica' as const,
+    price: 0,
+    image: 'customs',
+    featured: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '4',
+    title: 'Seguro de Carga',
+    description: 'Pólizas de seguro completas para mercancías en tránsito internacional. Cobertura contra pérdida, daño y robo.',
+    category: 'asesoria_estrategica' as const,
+    price: 0,
+    image: 'insurance',
+    featured: false,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '5',
+    title: 'Almacenamiento y Distribución',
+    description: 'Servicios de almacenamiento estratégico y distribución final. Gestión de inventario y logística de última milla.',
+    category: 'control_optimizacion' as const,
+    price: 0,
+    image: 'warehouse',
+    featured: false,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '6',
+    title: 'Consultoría Logística',
+    description: 'Análisis y optimización de cadenas de suministro. Reducción de costos y mejora de eficiencia en procesos logísticos.',
+    category: 'control_optimizacion' as const,
+    price: 0,
+    image: 'consulting',
+    featured: false,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  }
+];
 
 const Services: React.FC = () => {
   const [services, setServices] = useState<Service[]>([]);
@@ -19,19 +87,12 @@ const Services: React.FC = () => {
   ];
 
   useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const servicesData = await getServices();
-        setServices(servicesData);
-        setFilteredServices(servicesData);
-      } catch (error) {
-        console.error('Error fetching services:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchServices();
+    // Simular carga y usar datos mock
+    setTimeout(() => {
+      setServices(mockServices);
+      setFilteredServices(mockServices);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   useEffect(() => {
