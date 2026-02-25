@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -42,8 +42,8 @@ const mockServices: Service[] = [
 ];
 
 const Home: React.FC = () => {
-  const [featuredServices, setFeaturedServices] = useState<Service[]>(mockServices);
-  const [loading, setLoading] = useState(false);
+  const [featuredServices] = useState<Service[]>(mockServices);
+  const [loading] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-50">
