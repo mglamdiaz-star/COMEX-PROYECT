@@ -42,16 +42,8 @@ const mockServices: Service[] = [
 ];
 
 const Home: React.FC = () => {
-  const [featuredServices, setFeaturedServices] = useState<Service[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simular carga y usar datos mock
-    setTimeout(() => {
-      setFeaturedServices(mockServices);
-      setLoading(false);
-    }, 1000);
-  }, []);
+  const [featuredServices, setFeaturedServices] = useState<Service[]>(mockServices);
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-50">
