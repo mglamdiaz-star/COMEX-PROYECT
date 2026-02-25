@@ -4,26 +4,53 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ServiceCard from '../components/ServiceCard';
 import { Service } from '../types';
-import { getServices } from '../services/api';
+
+const mockServices: Service[] = [
+  {
+    _id: '1',
+    title: 'Carga Aérea Internacional',
+    description: 'Transporte rápido y seguro para mercancías urgentes con cobertura mundial.',
+    category: 'gestion_operativa' as const,
+    price: 0,
+    image: 'air',
+    featured: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '2', 
+    title: 'Carga Marítima',
+    description: 'Soluciones económicas para grandes volúmenes con contenedores completos.',
+    category: 'gestion_operativa' as const,
+    price: 0,
+    image: 'sea',
+    featured: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '3',
+    title: 'Aduanas y Documentación',
+    description: 'Gestión completa de trámites aduaneros y documentación internacional.',
+    category: 'asesoria_estrategica' as const,
+    price: 0,
+    image: 'customs',
+    featured: true,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  }
+];
 
 const Home: React.FC = () => {
   const [featuredServices, setFeaturedServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchFeaturedServices = async () => {
-      try {
-        const services = await getServices();
-        const featured = services.filter(service => service.featured);
-        setFeaturedServices(featured);
-      } catch (error) {
-        console.error('Error fetching featured services:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFeaturedServices();
+    // Simular carga y usar datos mock
+    setTimeout(() => {
+      setFeaturedServices(mockServices);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   return (
